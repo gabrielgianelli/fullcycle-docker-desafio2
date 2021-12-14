@@ -10,8 +10,11 @@ const config = {
 const mysql = require('mysql');
 const connection = mysql.createConnection(config);
 
-const sql = `SELECT name FROM people`;
-connection.query(sql, function (err, result) {
+const insert = `INSERT INTO people(name) values('Gabriel')`;
+connection.query(insert);
+
+const select = `SELECT name FROM people`;
+connection.query(select, function (err, result) {
     let namesList = '';
     result.forEach(person => {
         namesList += `<li>${person.name}</li>`;
